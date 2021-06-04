@@ -104,14 +104,13 @@ const Products = (props) => {
       instock --;
       setCart([...cart, ...item]);
     }else {
-      instock = instock;
+      return
     }   
     item[0].instock = instock;
     console.log(`add to Cart ${JSON.stringify(item)}`);
-  
-    
     doFetch(query);
   };
+
   const deleteCartItem = (index) => {
     cart[index].instock++
     let newCart = cart.filter((item, i) => index != i);   
@@ -176,6 +175,7 @@ const Products = (props) => {
   }
   const checkOut = () => {
     setCart([])
+    alert(`Your total today was: $${total}`)
   };
 
   // TODO: implement the restockProducts function
